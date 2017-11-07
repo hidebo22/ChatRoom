@@ -63,6 +63,7 @@ func main() {
 				},
 				RenderArgNames: map[int][]string{ 
 					14: []string{ 
+						"room",
 						"user",
 					},
 				},

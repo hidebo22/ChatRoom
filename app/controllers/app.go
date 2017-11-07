@@ -21,5 +21,5 @@ func (c Application) EnterDemo(room int, user string) revel.Result {
 		return c.Redirect(Application.Index)
 	}
 
-	return c.Redirect("/websocket/room?room=%s&user=%s", room, user)
+	return c.Redirect("/websocket/room?room=%d&user=%s", room, user)
 }

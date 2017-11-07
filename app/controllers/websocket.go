@@ -11,7 +11,7 @@ type WebSocket struct {
 }
 
 func (c WebSocket) Room(room int, user string) revel.Result {
-	return c.Render(user)
+	return c.Render(room, user)
 }
 
 func (c WebSocket) RoomSocket(room int, user string, ws revel.ServerWebSocket) revel.Result {
@@ -21,8 +21,8 @@ func (c WebSocket) RoomSocket(room int, user string, ws revel.ServerWebSocket) r
 	}
 
 	// Join the room.
-	subscription := chatroom.Subscribe()
-	defer subscription.Cancel()
+	subscription := chatroom.Subscribe(room)
+	defer subscription.Cancel(room)
 
 	chatroom.Join(room, user)
 	defer chatroom.Leave(room, user)
